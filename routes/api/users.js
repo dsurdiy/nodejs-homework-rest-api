@@ -2,7 +2,7 @@ const express = require("express");
 
 const ctrl = require("../../controllers/users");
 
-const { authenticate, isValidId } = require("../../middlewares");
+const { authenticate, isValidId, upload } = require("../../middlewares");
 
 const router = express.Router();
 
@@ -19,6 +19,13 @@ router.patch(
   authenticate,
   isValidId,
   ctrl.updateSubscription
+);
+
+router.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  ctrl.updateAvatar
 );
 
 module.exports = router;
