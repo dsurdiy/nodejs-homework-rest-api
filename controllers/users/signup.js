@@ -4,7 +4,9 @@ const { nanoid } = require("nanoid");
 
 const { User, schemas } = require("../../models/user");
 
-const { requestError, createVerifyEmail, sendEmail } = require("../../helpers");
+const { requestError } = require("../../helpers");
+
+const { createVerifyEmail, sendEmail } = require("../../services");
 
 const signup = async (req, res, next) => {
   try {
